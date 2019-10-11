@@ -36,7 +36,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.3</version>
                 <configuration>
-                    <mainClass>com.elevatorproject.App</mainClass>
+                    <mainClass>com.elevatorproject.Launcher</mainClass>
                 </configuration>
             </plugin>
             

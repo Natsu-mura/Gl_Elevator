@@ -8,11 +8,30 @@ and open the template in the editor.
     Author     : justi
 */
 
-.Button1{
-  -fx-font: 20 centurygothic;
-  -fx-font-weight: bold;
-  -fx-text-fill: #916B44;
-  -fx-base: #d1d1d1;
-  -fx-focus-color: #000000;
-  -fx-faint-focus-color: #333333;
+.intScene{
+    
+}
+
+.intKeyboard{
+    
+}
+
+.intKey{
+    -fx-font: 16 centurygothic;
+    -fx-font-weight : bold;
+    -fx-base: #d1d1d1;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.intScreen{
+    
+}
+
+.controlScene{
+    
+}
+
+.controlKey{
+    
 }

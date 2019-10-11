@@ -20,7 +20,7 @@ import javafx.scene.shape.Rectangle;
  */
 public class InteriorKeyboard extends Parent{
     
-    private InteriorKey keys[];
+    private final InteriorKey keys[];
     
     public InteriorKeyboard(){
         Rectangle fond_int = new Rectangle();
@@ -28,7 +28,7 @@ public class InteriorKeyboard extends Parent{
         fond_int.setHeight(350);
         fond_int.setArcWidth(10);
         fond_int.setArcHeight(10);
-        fond_int.setFill( //on remplie notre rectangle avec un dégradé
+        fond_int.setFill( //on remplit notre rectangle avec un dégradé
             new LinearGradient(0f, 0f, 0f, 1f, true, CycleMethod.NO_CYCLE,
                 new Stop[] {
                     new Stop(1, Color.web("#7e7e7e")),

@@ -1,0 +1,37 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10 oct. 2019, 16:46:05
+    Author     : justi
+*/
+
+.intScene{
+    
+}
+
+.intKeyboard{
+    
+}
+
+.intKey{
+    -fx-font: 16 centurygothic;
+    -fx-font-weight : bold;
+    -fx-base: #d1d1d1;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.intScreen{
+    
+}
+
+.controlScene{
+    
+}
+
+.controlKey{
+    
+}

@@ -24,11 +24,11 @@ public class InteriorKey extends Parent implements Observer{
     Button key;
     Circle border;
 
-    public String display;
+    private final String display;
     private final int floor;
     private final int posX;
     private final int posY;
-    private Control control = Control.getInstance();
+    private CommandControl control = CommandControl.getInstance();
 
     public InteriorKey(String display, int floor, int posX, int posY) {
         this.display=display;
@@ -74,7 +74,7 @@ public class InteriorKey extends Parent implements Observer{
             else
                 appuyer();
         });
-        observe(Control.getInstance());
+        observe(CommandControl.getInstance());
     }
     
     public void appuyer(){
@@ -99,7 +99,7 @@ public class InteriorKey extends Parent implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-        ArrayList<Integer> someVariable = ((Control) o).getFloors();
+        ArrayList<Integer> someVariable = ((CommandControl) o).getFloors();
         if(someVariable.contains(floor) && floor!=-1) 
             border.setStroke(Color.web("#f1bc31"));
         else if(someVariable.contains(floor) && floor==-1) 

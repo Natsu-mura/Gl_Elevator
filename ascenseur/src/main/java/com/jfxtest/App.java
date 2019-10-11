@@ -3,11 +3,10 @@ package com.jfxtest;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Group;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 /**
@@ -16,22 +15,26 @@ import javafx.stage.Stage;
  */
 public class App extends Application{
     @Override
-    public void start(Stage stage) {
-        stage.setTitle("Projet ascenseur - GUI");
-        stage.setResizable(false);
-        final BorderPane root = new BorderPane();
-        final Scene scene = new Scene(root, 1100, 600);
-        root.setPadding(new Insets(0, 0, 0, 0));
-        
-        Interior interior = new Interior();
-        root.setRight(interior);
+    public void start(Stage controlWindow) {
         
         
-        scene.getStylesheets().add("styleSheet.css");
-        root.getStyleClass().add("mainScene");
+        /*** obtient les limites de l'écran pour le positionnement des fenêtres ***/
         
-        stage.setScene(scene);
-        stage.show();
+        Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+        
+        /*** Interface de contrôle ***/
+        
+        Control control = new Control();
+        
+        
+        /*** Intérieur de l'ascenseur ***/
+        
+        Interior interior = new Interior(primaryScreenBounds);
+        
+        /*** Extérieur de l'ascenseur ***/
+  
+        Exterior ext = new Exterior(primaryScreenBounds);
+        
     }
     
     public static void main(String[] args) {

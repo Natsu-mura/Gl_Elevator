@@ -1,0 +1,18 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 8 oct. 2019, 13:34:41
+    Author     : justi
+*/
+
+.Button1{
+  -fx-font: 20 centurygothic;
+  -fx-font-weight: bold;
+  -fx-text-fill: #916B44;
+  -fx-base: #d1d1d1;
+  -fx-focus-color: #000000;
+  -fx-faint-focus-color: #333333;
+}
