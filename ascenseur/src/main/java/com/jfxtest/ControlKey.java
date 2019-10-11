@@ -7,6 +7,7 @@ package com.jfxtest;
 
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 
 /**
@@ -19,7 +20,6 @@ public class ControlKey extends Parent{
 
     private final String command;
     private final int comId;
-    private CommandControl control = CommandControl.getInstance();
 
     public ControlKey(String command, int comId) {
         this.command=command;
@@ -37,5 +37,22 @@ public class ControlKey extends Parent{
         );
         
         this.getChildren().add(this.button);
+        
+        button.setOnMouseClicked((MouseEvent me) -> {
+            switch (this.comId) {
+            case 0:
+                x.goUp();
+                break;
+            case 1:
+                x.goDown();
+                break;
+            case 2:
+                x.stopNextFloor();
+                break;
+            default:
+                x.stopNow();
+                break;
+        }
+        });
     }
 }

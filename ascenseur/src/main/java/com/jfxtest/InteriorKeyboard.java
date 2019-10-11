@@ -18,7 +18,7 @@ import javafx.scene.shape.Rectangle;
  *
  * @author justi
  */
-public class InteriorKeyboard extends Parent{
+public class InteriorKeyboard extends Parent implements ButtonLightInterface{
     
     private final InteriorKey keys[];
     
@@ -59,5 +59,15 @@ public class InteriorKeyboard extends Parent{
         
         this.getChildren().addAll(Arrays.asList(keys));
         
+    }
+
+    @Override
+    public void setIntLight(int i, boolean status) {
+        this.keys[i].light(status);
+    }
+
+    @Override
+    public void setExtLight(int i, int direction) {
+        throw new UnsupportedOperationException("Not supported"); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -20,11 +20,8 @@ import javafx.stage.Stage;
  */
 public class Control extends Parent{
         
-    private CommandControl control = CommandControl.getInstance();
-    private InteriorScreen screen;
-    private InteriorKeyboard interiorKeyboard;
     private final Scene scene;
-    private ControlKey[] commands;
+    private final ControlKey[] commands;
     
     public Control(){
         

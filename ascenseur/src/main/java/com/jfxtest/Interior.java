@@ -6,8 +6,6 @@
 package com.jfxtest;
 
 
-import java.util.Observable;
-import java.util.Observer;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
@@ -20,11 +18,10 @@ import javafx.stage.Stage;
  *
  * @author justi
  */
-public class Interior extends Parent implements Observer{
+public class Interior extends Parent{
     
-    private CommandControl control = CommandControl.getInstance();
-    private InteriorScreen screen;
-    private InteriorKeyboard interiorKeyboard;
+    private final InteriorScreen screen;
+    private final InteriorKeyboard interiorKeyboard;
     private final Scene scene;
     
     public Interior(Rectangle2D primaryScreenBounds){
@@ -56,27 +53,7 @@ public class Interior extends Parent implements Observer{
         window.setScene(this.scene);
         window.show();
         
-        observe(control);
-    }
-    
-    public void observe(Observable o) {
-        o.addObserver(this);
     }
 
-
-    @Override
-    public void update(Observable o, Object arg) {
-      int someVariable = ((CommandControl) o).getDirection();
-      switch(someVariable) {
-        case -1:
-           screen.down();
-          break;
-        case 1:
-           screen.up();
-          break;
-        default:
-           screen.stop(CommandControl.getInstance().getCurrent());
-      }
-    }
     
 }

@@ -2,10 +2,7 @@ package com.jfxtest;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;
-import javafx.geometry.Insets;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 

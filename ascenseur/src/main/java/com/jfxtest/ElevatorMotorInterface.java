@@ -9,7 +9,9 @@ package com.jfxtest;
  *
  * @author justi
  */
-public interface ButtonLightInterface {
-    public void setIntLight (int i, boolean status);
-    public void setExtLight (int i, int direction);
+public interface ElevatorMotorInterface {
+    public void goUp();
+    public void goDown();
+    public void stopNextFloor();
+    public void stopNow();
 }

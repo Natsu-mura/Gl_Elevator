@@ -21,9 +21,8 @@ import javafx.stage.Stage;
  *
  * @author justi
  */
-class Exterior extends Parent{
+class Exterior extends Parent implements ButtonLightInterface{
     
-    private CommandControl control = CommandControl.getInstance();
     private final Scene scene;
     private final ExteriorDisplay keys[];
     
@@ -85,5 +84,15 @@ class Exterior extends Parent{
         
         window.setScene(this.scene);
         window.show();
+    }
+    
+    @Override
+    public void setExtLight(int i, int direction){
+        this.keys[i].light(direction);
+    }
+
+    @Override
+    public void setIntLight(int i, boolean status) {
+        throw new UnsupportedOperationException("Not supported."); //To change body of generated methods, choose Tools | Templates.
     }
 }

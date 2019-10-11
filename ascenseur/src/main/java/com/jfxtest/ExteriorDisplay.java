@@ -11,9 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.StrokeType;
 
 /**
  *
@@ -25,7 +23,6 @@ public class ExteriorDisplay extends Parent{
     Button downKey;
 
     private final int id;
-    private CommandControl control = CommandControl.getInstance();
 
     public ExteriorDisplay(int id) {
         this.id = id;
@@ -52,13 +49,7 @@ public class ExteriorDisplay extends Parent{
         );
         
         upKey.setOnMouseClicked((MouseEvent me) -> {
-            upKey.setStyle("-fx-font: 16 centurygothic;" +
-                "-fx-font-weight : bold;" +
-                "-fx-text-fill:#d46d6d;"+
-                "-fx-base: #d1d1d1;"+
-                "-fx-focus-color: transparent;"+
-                "-fx-faint-focus-color: transparent;"
-        );
+            x.extButtonCallback(this.id, 1);
         });
         
         downKey = new Button("DOWN");
@@ -76,13 +67,7 @@ public class ExteriorDisplay extends Parent{
         );
         
         downKey.setOnMouseClicked((MouseEvent me) -> {
-            downKey.setStyle("-fx-font: 16 centurygothic;" +
-                "-fx-font-weight : bold;" +
-                "-fx-text-fill:#d46d6d;"+
-                "-fx-base: #d1d1d1;"+
-                "-fx-focus-color: transparent;"+
-                "-fx-faint-focus-color: transparent;"
-        );
+            x.extButtonCallback(this.id, -1);
         });
         switch (this.id) {
             case 0:
@@ -97,5 +82,44 @@ public class ExteriorDisplay extends Parent{
         }
 
         this.getChildren().add(root);
+    }
+    
+    public void light(int direction){
+        switch (direction) {
+            case -1:
+                downKey.setStyle("-fx-font: 16 centurygothic;" +
+                "-fx-font-weight : bold;" +
+                "-fx-text-fill:#d46d6d;"+
+                "-fx-base: #d1d1d1;"+
+                "-fx-focus-color: transparent;"+
+                "-fx-faint-focus-color: transparent;"
+                );
+                break;
+            case 1:
+                upKey.setStyle("-fx-font: 16 centurygothic;" +
+                "-fx-font-weight : bold;" +
+                "-fx-text-fill:#d46d6d;"+
+                "-fx-base: #d1d1d1;"+
+                "-fx-focus-color: transparent;"+
+                "-fx-faint-focus-color: transparent;"
+                );
+                break;
+            default:
+                downKey.setStyle(
+                "-fx-font: 16 centurygothic;" +
+                "-fx-font-weight : bold;" +
+                "-fx-base: #d1d1d1;"+
+                "-fx-focus-color: transparent;"+
+                "-fx-faint-focus-color: transparent;"
+                );
+                downKey.setStyle(
+                "-fx-font: 16 centurygothic;" +
+                "-fx-font-weight : bold;" +
+                "-fx-base: #d1d1d1;"+
+                "-fx-focus-color: transparent;"+
+                "-fx-faint-focus-color: transparent;"
+                );
+                break;
+        }
     }
 }

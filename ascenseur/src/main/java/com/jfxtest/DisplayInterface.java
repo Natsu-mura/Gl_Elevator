@@ -10,5 +10,6 @@ package com.jfxtest;
  * @author justi
  */
 public interface DisplayInterface {
-    
+    public void setFloor(int i);
+    public void setDirection(int i);
 }

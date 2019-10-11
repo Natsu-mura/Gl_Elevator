@@ -22,13 +22,14 @@ import javafx.scene.text.TextAlignment;
  *
  * @author justi
  */
-public class InteriorScreen extends Parent{
+public class InteriorScreen extends Parent implements DisplayInterface{
     
-    Rectangle base;
-    Text display;
-    Canvas arrowLeft;
-    Canvas arrowRight;
-    int currentFloor;
+    private Rectangle base;
+    private Text display;
+    private Canvas arrowLeft;
+    private Canvas arrowRight;
+    private int currentFloor;
+    private TilePane screen;
     
     public InteriorScreen(int currentFloor){
         
@@ -67,7 +68,7 @@ public class InteriorScreen extends Parent{
         
         /*** TilePane ***/
         
-        TilePane screen = new TilePane();
+        screen = new TilePane();
         screen.setPrefSize(250, 100);
         screen.getChildren().addAll(
                 arrowLeft,
@@ -89,19 +90,30 @@ public class InteriorScreen extends Parent{
         
        
     }
-    
-    public void up(){
-        new DrawArrow(false, false, arrowRight);
+
+    @Override
+    public void setFloor(int i) {
+        this.currentFloor=i;
+        this.display.setText("FLOOR\n" + this.currentFloor);
     }
+
+    @Override
+    public void setDirection(int i) {
+       switch(i) {
+        case -1:
+            //this.screen.getChildren().remove(arrowRight);
+            new DrawArrow(true, false, arrowRight);
+            //this.screen.getChildren().add(arrowRight);
+            break;
+        case 1:
+            //this.screen.getChildren().remove(arrowLeft);
+            new DrawArrow(false, false, arrowLeft);
+            //this.screen.getChildren().add(arrowLeft);
+            break;
+        default:
+           new DrawArrow(false, true, arrowLeft);
+           new DrawArrow(true, true, arrowRight);
+        }
     
-    public void down(){
-        new DrawArrow(true, false, arrowLeft);
     }
-    
-    public void stop(int newFloor){
-        new DrawArrow(true, true, arrowLeft);
-        new DrawArrow(false, true, arrowRight);
-        display.setText("FLOOR\n" + newFloor);
-    }
-    
 }

@@ -5,9 +5,6 @@
  */
 package com.jfxtest;
 
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
@@ -19,7 +16,7 @@ import javafx.scene.shape.StrokeType;
  *
  * @author justi
  */
-public class InteriorKey extends Parent implements Observer{
+public class InteriorKey extends Parent{
     
     Button key;
     Circle border;
@@ -28,7 +25,6 @@ public class InteriorKey extends Parent implements Observer{
     private final int floor;
     private final int posX;
     private final int posY;
-    private CommandControl control = CommandControl.getInstance();
 
     public InteriorKey(String display, int floor, int posX, int posY) {
         this.display=display;
@@ -68,44 +64,25 @@ public class InteriorKey extends Parent implements Observer{
         
         
         key.setOnMouseClicked((MouseEvent me) -> {
-            if(this.floor==-1){
-                emergency();
+            if(this.floor!=-1){
+                x.intButtonCallback(this.floor);
             }
-            else
-                appuyer();
+            else 
+                x.emergency();
         });
-        observe(CommandControl.getInstance());
-    }
-    
-    public void appuyer(){
-        if (!control.getFloors().contains(this.floor)){
-            control.addFloor(this.floor);
-            control.updateDir();
-            return;
-        }
-        control.removeFloor(this.floor);
-        control.updateDir();
-    }
-    
-    public void emergency(){
-        control.emergency(-1);
-        control.updateDir();
-    }
-    
-        
-    public void observe(Observable o) {
-        o.addObserver(this);
+            
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-        ArrayList<Integer> someVariable = ((CommandControl) o).getFloors();
-        if(someVariable.contains(floor) && floor!=-1) 
-            border.setStroke(Color.web("#f1bc31"));
-        else if(someVariable.contains(floor) && floor==-1) 
-            border.setStroke(Color.web("#ef370e"));
-        else
-            border.setStroke(Color.web("#000000"));
+    public void light(boolean status){
+        if(status && this.floor==-1){
+            this.border.setStroke(Color.web("#ef370e"));
+            return;
+        }
+        else if(status){
+            this.border.setStroke(Color.web("#f1bc31"));
+            return;
+        }
+        this.border.setStroke(Color.web("#000000"));
     }
     
 }
