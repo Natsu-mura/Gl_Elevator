@@ -18,8 +18,9 @@ import javafx.scene.shape.StrokeType;
  */
 public class InteriorKey extends Parent{
     
-    Button key;
-    Circle border;
+    private final Button key;
+    private final Circle border;
+    private final Controller controlCommand = Controller.getInstance();
 
     private final String display;
     private final int floor;
@@ -65,10 +66,15 @@ public class InteriorKey extends Parent{
         
         key.setOnMouseClicked((MouseEvent me) -> {
             if(this.floor!=-1){
-                x.intButtonCallback(this.floor);
+                controlCommand.intButtonCallback(this.floor);
+                
             }
             else 
-                x.emergency();
+                if(!controlCommand.getEmergency())
+                    controlCommand.emergency();
+                else
+                    controlCommand.emergencyResolved();
+            
         });
             
     }

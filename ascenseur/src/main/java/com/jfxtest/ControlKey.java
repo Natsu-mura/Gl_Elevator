@@ -16,7 +16,8 @@ import javafx.scene.shape.Circle;
  */
 public class ControlKey extends Parent{
     
-    Button button;
+    private Button button;
+    private final Controller controlCommand = Controller.getInstance();
 
     private final String command;
     private final int comId;
@@ -41,16 +42,26 @@ public class ControlKey extends Parent{
         button.setOnMouseClicked((MouseEvent me) -> {
             switch (this.comId) {
             case 0:
-                x.goUp();
+                this.controlCommand.emptyRequests();
+                this.controlCommand.intButtonCallback(8);
+                this.controlCommand.changeLibre(false);
                 break;
             case 1:
-                x.goDown();
+                this.controlCommand.emptyRequests();
+                this.controlCommand.intButtonCallback(0);
+                this.controlCommand.changeLibre(false);
                 break;
             case 2:
-                x.stopNextFloor();
+                this.controlCommand.changeLibre(true);
+                System.out.println(this.controlCommand.getState());
+                this.controlCommand.intButtonCallback(this.controlCommand.getCurrent()+2*(this.controlCommand.getState()));
+                this.controlCommand.changeLibre(false);
                 break;
             default:
-                x.stopNow();
+                if(this.controlCommand.getEmergency())
+                    this.controlCommand.emergencyResolved();
+                else
+                    this.controlCommand.emergency();
                 break;
         }
         });

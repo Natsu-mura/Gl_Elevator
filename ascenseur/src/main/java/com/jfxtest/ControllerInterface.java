@@ -12,7 +12,7 @@ package com.jfxtest;
 public interface ControllerInterface {
     public void intButtonCallback(int i);
     public void extButtonCallback(int i, int direction);
-    public void floorCrossedCallback(int i);
+    public void floorCrossedCallback(int i) throws InterruptedException;
     public void emergency();
     public void emergencyResolved();
     public void updateTarget();

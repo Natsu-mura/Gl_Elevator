@@ -76,8 +76,8 @@ class Exterior extends Parent implements ButtonLightInterface{
         Stage window = new Stage();
         
         /*** set Stage boundaries to the lower right corner of the visible bounds of the main screen ***/
-        window.setX(primaryScreenBounds.getMinX() + 100);
-        //window.setY(primaryScreenBounds.getMinY() + 100);
+        window.setX(primaryScreenBounds.getMinX() + primaryScreenBounds.getWidth() - 1150);
+        window.setY(primaryScreenBounds.getMinY() + 50);
         
         window.setTitle("Ascenseur - vue extérieure");
         window.setResizable(false);

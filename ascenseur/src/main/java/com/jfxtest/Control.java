@@ -9,6 +9,7 @@ import java.util.Arrays;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
@@ -23,7 +24,7 @@ public class Control extends Parent{
     private final Scene scene;
     private final ControlKey[] commands;
     
-    public Control(){
+    public Control(Rectangle2D primaryScreenBounds){
         
         /*** Interface de base ***/
         final VBox root = new VBox();
@@ -43,6 +44,9 @@ public class Control extends Parent{
         root.getChildren().addAll(Arrays.asList(commands));
         
         Stage window = new Stage();
+        /*** set Stage boundaries to the lower right corner of the visible bounds of the main screen ***/
+        window.setX(primaryScreenBounds.getMinX() + primaryScreenBounds.getWidth() - 775);
+        window.setY(primaryScreenBounds.getMinY() + 50);
         
         window.setTitle("Ascenseur - Controle");
         window.setResizable(false);

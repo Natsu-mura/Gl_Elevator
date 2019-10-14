@@ -19,8 +19,9 @@ import javafx.scene.shape.Circle;
  */
 public class ExteriorDisplay extends Parent{
     
-    Button upKey;
-    Button downKey;
+    private Button upKey;
+    private Button downKey;
+    private final Controller controlCommand = Controller.getInstance();
 
     private final int id;
 
@@ -49,7 +50,7 @@ public class ExteriorDisplay extends Parent{
         );
         
         upKey.setOnMouseClicked((MouseEvent me) -> {
-            x.extButtonCallback(this.id, 1);
+            controlCommand.extButtonCallback(this.id, 1);
         });
         
         downKey = new Button("DOWN");
@@ -67,7 +68,8 @@ public class ExteriorDisplay extends Parent{
         );
         
         downKey.setOnMouseClicked((MouseEvent me) -> {
-            x.extButtonCallback(this.id, -1);
+            controlCommand.extButtonCallback(this.id, -1);
+            
         });
         switch (this.id) {
             case 0:
@@ -112,7 +114,7 @@ public class ExteriorDisplay extends Parent{
                 "-fx-focus-color: transparent;"+
                 "-fx-faint-focus-color: transparent;"
                 );
-                downKey.setStyle(
+                upKey.setStyle(
                 "-fx-font: 16 centurygothic;" +
                 "-fx-font-weight : bold;" +
                 "-fx-base: #d1d1d1;"+

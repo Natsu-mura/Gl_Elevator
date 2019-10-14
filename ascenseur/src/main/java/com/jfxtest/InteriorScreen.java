@@ -101,18 +101,14 @@ public class InteriorScreen extends Parent implements DisplayInterface{
     public void setDirection(int i) {
        switch(i) {
         case -1:
-            //this.screen.getChildren().remove(arrowRight);
-            new DrawArrow(true, false, arrowRight);
-            //this.screen.getChildren().add(arrowRight);
+            new DrawArrow(true, false, arrowLeft);
             break;
         case 1:
-            //this.screen.getChildren().remove(arrowLeft);
-            new DrawArrow(false, false, arrowLeft);
-            //this.screen.getChildren().add(arrowLeft);
+            new DrawArrow(false, false, arrowRight);
             break;
         default:
-           new DrawArrow(false, true, arrowLeft);
-           new DrawArrow(true, true, arrowRight);
+           new DrawArrow(false, true, arrowRight);
+           new DrawArrow(true, true, arrowLeft);
         }
     
     }

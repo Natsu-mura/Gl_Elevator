@@ -12,7 +12,7 @@ import javafx.stage.Stage;
  */
 public class App extends Application{
     @Override
-    public void start(Stage controlWindow) {
+    public void start(Stage controlWindow) throws InterruptedException {
         
         
         /*** obtient les limites de l'écran pour le positionnement des fenêtres ***/
@@ -21,7 +21,7 @@ public class App extends Application{
         
         /*** Interface de contrôle ***/
         
-        Control control = new Control();
+        Control op = new Control(primaryScreenBounds);
         
         
         /*** Intérieur de l'ascenseur ***/
@@ -31,6 +31,13 @@ public class App extends Application{
         /*** Extérieur de l'ascenseur ***/
   
         Exterior ext = new Exterior(primaryScreenBounds);
+        
+        
+        MotorDisplay motor = new MotorDisplay(primaryScreenBounds, interior);
+        motor.init();
+        
+        Controller.setInstance( interior,  ext,  op, motor);
+        
         
     }
     

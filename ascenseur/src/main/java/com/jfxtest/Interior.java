@@ -45,7 +45,7 @@ public class Interior extends Parent{
         
         /*** set Stage boundaries to the lower right corner of the visible bounds of the main screen ***/
         window.setX(primaryScreenBounds.getMinX() + primaryScreenBounds.getWidth() - 400);
-       // window.setY(primaryScreenBounds.getMinY() + primaryScreenBounds.getHeight() - 700);
+        window.setY(primaryScreenBounds.getMinY() + 50);
         
         window.setTitle("Ascenseur - vue intérieure");
         window.setResizable(false);
@@ -55,5 +55,15 @@ public class Interior extends Parent{
         
     }
 
+    public InteriorScreen getScreen() {
+        return screen;
+    }
+
+    public InteriorKeyboard getInteriorKeyboard() {
+        return interiorKeyboard;
+    }
+
+    
+    
     
 }

@@ -1,2 +1,8 @@
 com\jfxtest\Launcher.class
 com\jfxtest\App.class
+com\jfxtest\DrawArrow.class
+com\jfxtest\Motor.class
+com\jfxtest\Recangle2D.class
+com\jfxtest\InteriorKey.class
+com\jfxtest\InteriorKeyboard.class
+com\jfxtest\ElevatorMotorInterface.class
