@@ -1,5 +1,10 @@
 package com.jfxtest;
 
+import Motor.MotorDisplay;
+import Operative.Control;
+import Interior.Interior;
+import Exterior.Exterior;
+import Controller.Controller;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.geometry.Rectangle2D;
